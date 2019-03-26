@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Lab1_4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("1 Da se vnesuvaat broevi ili 2 slucajno da se generiraat");
+             int izbor = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Kolku broevi da se vnesat:");
+            int N = Convert.ToInt32(Console.ReadLine());
+            int najmal = 10000, najgolem = 1;
+            float prosek = 0;
+            Random random = new Random();
+            if (izbor==1) {
+                for (int i = 0; i < N; i++)
+                {
+
+                 
+                    int broj = Convert.ToInt32(Console.ReadLine());
+                    prosek += broj;
+                    if (broj < najmal)
+                        najmal = broj;
+                    if (broj > najgolem)
+                        najgolem = broj;
+                }
+                Console.WriteLine("Najgolem: {0} Najmal: {1} Prosek: {2}", najgolem, najmal, prosek / N);
+                Console.ReadKey();
+            }
+            else if (izbor==2)
+            {
+                for (int i = 0; i < N; i++)
+                {
+                    int broj = random.Next(1, 1000);
+                    prosek += broj;
+                    if (broj < najmal)
+                        najmal = broj;
+                    if (broj > najgolem)
+                        najgolem = broj;
+                }
+                Console.WriteLine("Najgolem: {0} Najmal: {1} Prosek: {2}", najgolem, najmal, prosek / N);
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("Pogresen izbor");
+                Console.ReadKey();
+            }
+          
+        }
+    }
+}
