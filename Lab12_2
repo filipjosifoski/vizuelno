@@ -1,0 +1,95 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Lab1_4
+{
+    class Program
+    {
+        public static int getMax(int[] data)
+        {
+            int max = int.Min
+                Value;
+            for(int i=0;i<data.Length;i++)
+            {
+
+                if (data[i] > max)
+                    max = data[i];
+            }
+            return max;
+
+        }
+        public static int getMin(int[] data)
+        {
+            int min = int.MaxValue;
+            for (int i = 0; i < data.Length; i++)
+            {
+
+                if (data[i] < min)
+                    min = data[i];
+            }
+            return min;
+
+        }
+        public static double getProsek(int[] data)
+        {
+            double prosek = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+
+                prosek += data[i];
+
+            }
+
+            prosek /= data.Length;
+            return prosek;
+
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("1 Da se vnesuvaat broevi ili 2 slucajno da se generiraat");
+             int izbor = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Kolku broevi da se vnesat:");
+            int N = Convert.ToInt32(Console.ReadLine());
+            int[] data=new int[N];
+            Random random = new Random();
+            if (izbor == 1) {
+                for (int i = 0; i < N; i++)
+                {
+
+
+                    data[i] = Convert.ToInt32(Console.ReadLine());
+                }
+                int max = getMax(data);
+                int min = getMin(data);
+                double prosek = getProsek(data);
+                Console.WriteLine("Najgolem: {0} Najmal: {1} Prosek: {2}", max, min, prosek);
+                Console.ReadKey();
+            }
+
+            else if (izbor == 2)
+            {
+                for (int i = 0; i < N; i++)
+                {
+                    data[i] = random.Next(1, 1000);
+                }
+                    int max = getMax(data);
+                    int min = getMin(data);
+                    double prosek = getProsek(data);
+                    Console.WriteLine("Najgolem: {0} Najmal: {1} Prosek: {2}", max, min, prosek);
+                    Console.ReadKey();
+
+                }
+           
+            
+            else
+            {
+                Console.WriteLine("Pogresen izbor");
+                Console.ReadKey();
+            }
+          
+        }
+    }
+}
