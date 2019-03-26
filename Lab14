@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Lab1555
+{
+
+    class Program
+    {
+        enum PasswordStrengh : int
+        {
+            easy = 1,
+            normal = 2,
+            hard = 3
+
+        }
+        static string generatePassword(PasswordStrengh ps)
+        {
+         String str="";
+            String alphabet = "abcdefghijklmnopqrstuvwxyz";
+            String alphabet2 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+           String alphabet3 = "$%#@!*abcdefghijklmnopqrstuvwxyz1234567890?;:ABCDEFGHIJKLMNOPQRSTUVWXYZ^&";
+            Random rand = new Random();
+            if (ps == PasswordStrengh.easy)
+            {
+                int kolkuBukvi = rand.Next(3, 6);
+                for (int j = 0; j < kolkuBukvi; j++)
+                {
+                    int i = rand.Next(0, alphabet.Length - 1);
+                    str += alphabet[i];
+                    
+                }
+                return str;
+            }
+
+            else if (ps == PasswordStrengh.normal)
+            {
+                int kolkuBukvi = rand.Next(6, 10);
+                for (int j = 0; j < kolkuBukvi; j++)
+                {
+                    int i = rand.Next(0, alphabet2.Length - 1);
+                    str += alphabet2[i];
+                }
+                return str;
+            }
+            else 
+            {
+                int kolkuBukvi = rand.Next(10, 50);
+                for (int j = 0; j < kolkuBukvi; j++)
+                {
+                    int i = rand.Next(0, alphabet3.Length - 1);
+                    str += alphabet3[i];
+                }
+                return str;
+            }
+        }
+        static void Main(string[] args)
+        {
+            string passLine = "lozinka1 test2 pogodok";
+            char[] delimiter = { ' ' };
+            string[] parts = passLine.Split(delimiter);
+            Console.WriteLine(generatePassword(PasswordStrengh.hard));
+            Console.ReadKey();
+        }
+    }
+}
